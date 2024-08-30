@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Movie Website</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #1e1e1e;
+        color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+      }
+
+      h1, h2, h3 {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      
+      
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background: linear-gradient(to right, #2a2a72, #009ffd);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      header h1 {
+        margin: 0;
+        color: #ffffff;
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+      }
+
+      header .search-bar input {
+        padding: 10px;
+        font-size: 16px;
+        width: 300px;
+        border: none;
+        border-radius: 30px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease-in-out;
+      }
+
+      header .search-bar input:focus {
+        width: 350px;
+        outline: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      }
+
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      nav ul li {
+        margin-right: 20px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: #ffffff;
+        font-size: 1.1rem;
+        padding: 10px 15px;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+      }
+
+      nav ul li a:hover {
+        background-color: #76a5da;
+      }
+
+     
+      #home {
+        background: url('frozen.jpeg') no-repeat center center/cover;
+        color: #fff;
+        text-align: center;
+        padding: 100px 20px;
+        margin-bottom: 40px;
+        position: relative;
+        background-color: #1e1e1e; 
+      }
+
+      #home::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+      }
+
+      #home h2 {
+        font-size: 3rem;
+        z-index: 1;
+        position: relative;
+      }
+
+      #home p {
+        font-size: 1.2rem;
+        margin-top: 20px;
+        z-index: 1;
+        position: relative;
+      }
+
+      #home img {
+        width: 100%;
+        max-width: 600px;
+        border-radius: 15px;
+        margin-top: 20px;
+      }
+
+     
+      .movie-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 0 20px;
+      }
+
+      .movie {
+        background-color: #2e2e2e;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .movie:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+      }
+
+      .movie img {
+        width: 100%;
+        border-bottom: 3px solid #009ffd;
+      }
+
+      .movie-info {
+        padding: 15px;
+        text-align: center;
+      }
+
+      .watch-now {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #009ffd;
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        transition: background-color 0.3s ease;
+      }
+
+      .watch-now:hover {
+        background-color: #006bbd;
+      }
+
+     
+      section#contact {
+        background-color: #282828;
+        padding: 50px 20px;
+      }
+
+      section#contact h2 {
+        text-align: center;
+        margin-bottom: 40px;
+        color: #76a5da;
+      }
+
+      section#contact form {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #1e1e1e;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      section#contact input, section#contact textarea {
+        background-color: #333;
+        border: none;
+        color: #fff;
+      }
+
+      section#contact input:focus, section#contact textarea:focus {
+        outline: none;
+        background-color: #444;
+      }
+
+      section#contact button {
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+        background-color: #009ffd;
+        color: white;
+        border: none;
+        border-radius: 30px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      section#contact button:hover {
+        background-color: #006bbd;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #1e1e1e;
+        border-top: 1px solid #333;
+        color: #bbb;
+      }
+
+      footer p {
+        margin: 0;
+      }
+
+     
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        position: relative;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        width: 80%;
+        max-width: 800px;
+      }
+
+      .modal-content iframe {
+        width: 100%;
+        height: 450px;
+      }
+
+      .modal .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>MY MOVIE</h1>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search movies..." />
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#popular">Popular Movies</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="home">
+      <h2>Featured Movie: Frozen</h2>
+      <p>
+        When their kingdom becomes trapped in an eternal winter, fearless Anna teams up with rugged iceman Kristoff and his loyal reindeer Sven to find her sister Elsa, whose icy powers have trapped the land in snow and ice.
+      </p>
+      <img src="frozen.jpeg" alt="Frozen Movie Poster" />
+    </section>
+
+    <section id="popular">
+      <h2>Popular Movies</h2>
+      <div class="movie-list" id="popularMovies">
+       
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <form action="#">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <footer>
+      <p>&copy; 2024 My Movie Website</p>
+    </footer>
+
+    <div id="trailerModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <iframe
+          id="trailerVideo"
+          src=""
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+
+    <script>
+      const apiKey = "0c23693e183955778e3ce99a80bf14ec";
+      const modal = document.getElementById("trailerModal");
+      const closeModal = document.querySelector(".close");
+      const trailerVideo = document.getElementById("trailerVideo");
+      const popularMoviesList = document.getElementById("popularMovies");
+
+      async function fetchMovieData(movieId) {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`
+        );
+        const data = await response.json();
+        return data;
+      }
+
+    
+      async function fetchPopularMovies() {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
+        );
+        const data = await response.json();
+        return data.results;
+      }
+
+      
+      async function displayPopularMovies() {
+        const movies = await fetchPopularMovies();
+        popularMoviesList.innerHTML = ""; 
+        movies.forEach((movie) => {
+          const movieElement = document.createElement("div");
+          movieElement.className = "movie";
+          movieElement.innerHTML = `
+                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+                    <div class="movie-info">
+                        <h3>${movie.title}</h3>
+                        <a href="#" class="watch-now" data-trailer-url="https://vidsrc.xyz/embed/movie?tmdb=${movie.id}">Watch Now</a>
+                    </div>
+                `;
+          movieElement.setAttribute("data-movie-id", movie.id);
+          popularMoviesList.appendChild(movieElement);
+        });
+      }
+
+      
+      document.addEventListener("click", async (event) => {
+        if (event.target.classList.contains("watch-now")) {
+          const trailerUrl = event.target.getAttribute("data-trailer-url");
+          trailerVideo.src = trailerUrl;
+          modal.style.display = "flex";
+          event.preventDefault(); // Prevent default anchor behavior
+        }
+      });
+
+    
+      closeModal.addEventListener("click", () => {
+        modal.style.display = "none";
+        trailerVideo.src = ""; 
+      });
+
+      
+      window.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          modal.style.display = "none";
+          trailerVideo.src = ""; 
+        }
+      });
+
+     
+      document
+        .getElementById("searchInput")
+        .addEventListener("input", async function () {
+          const searchQuery = this.value.toLowerCase();
+          const movieList = document.querySelector(".movie-list");
+          movieList.innerHTML = ""; 
+          if (searchQuery !== "") {
+            const movies = await searchMovies(searchQuery);
+            movies.forEach((movie) => {
+              const movieElement = document.createElement("div");
+              movieElement.className = "movie";
+              movieElement.innerHTML = `
+                        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+                        <div class="movie-info">
+                            <h3>${movie.title}</h3>
+                            <a href="#" class="watch-now" data-trailer-url="https://vidsrc.xyz/embed/movie?tmdb=${movie.id}">Watch Now</a>
+                        </div>
+                    `;
+              movieElement.setAttribute("data-movie-id", movie.id);
+              movieList.appendChild(movieElement);
+            });
+          } else {
+           
+            displayPopularMovies();
+          }
+        });
+
+     
+      async function searchMovies(query) {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`
+        );
+        const data = await response.json();
+        return data.results;
+      }
+
+    
+      displayPopularMovies();
+    </script>
+  </body>
+</html>
